@@ -30,7 +30,6 @@ export function validateInquiry(data, now = Date.now()) {
   if (!data.organization || data.organization.length < 2) errors.organization = "Please provide your organization.";
   if (!/^\S+@\S+\.\S+$/.test(data.email)) errors.email = "Please provide a valid email address.";
   if (!data.interest) errors.interest = "Please select your interest.";
-  if (!data.application || data.application.length < 10) errors.application = "Please describe the intended application.";
   if (!data.consent) errors.consent = "Consent is required.";
 
   const elapsed = now - data.startedAt;

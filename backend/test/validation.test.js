@@ -19,11 +19,15 @@ test("valid inquiry passes", () => {
 });
 
 test("required fields are enforced", () => {
-  const result = validateInquiry(valid({email: "bad", application: "short", consent: false}));
+  const result = validateInquiry(valid({email: "bad", consent: false}));
   assert.equal(result.valid, false);
   assert.ok(result.errors.email);
-  assert.ok(result.errors.application);
   assert.ok(result.errors.consent);
+});
+
+test("intended application is optional", () => {
+  const result = validateInquiry(valid({application: ""}));
+  assert.equal(result.valid, true);
 });
 
 test("submission timing rejects instant bots", () => {

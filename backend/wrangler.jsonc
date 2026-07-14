@@ -5,14 +5,11 @@
   "compatibility_date": "2026-07-13",
   "workers_dev": true,
   "vars": {
-    "ALLOWED_ORIGINS": "http://localhost:8000,https://www.example.com,https://example.com",
-    "PUBLIC_SITE_URL": "https://www.example.com",
-    "NOTIFY_EMAIL": "sales@example.com",
-    "FROM_EMAIL": "OptiTrack System Sale <inquiries@example.com>",
-    "CONFIRMATION_FROM_EMAIL": "OptiTrack System Sale <inquiries@example.com>",
+    "ALLOWED_ORIGINS": "http://localhost:8000,https://oldekingcole.github.io",
+    "PUBLIC_SITE_URL": "https://oldekingcole.github.io/optitrack-system-sale/",
     "SEND_BUYER_CONFIRMATION": "false",
     "TURNSTILE_REQUIRED": "true",
-    "TURNSTILE_EXPECTED_HOSTNAME": "www.example.com",
+    "TURNSTILE_EXPECTED_HOSTNAME": "oldekingcole.github.io",
     "MAX_SUBMISSIONS_PER_HOUR": "5"
   },
   "d1_databases": [

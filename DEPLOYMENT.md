@@ -11,6 +11,16 @@ api.yourdomain.com  -> Cloudflare Worker backend
 
 This provides a custom public domain while preserving GitHub-based version control and automatic frontend deployment.
 
+## Staging deployment (before production)
+
+Use the `deploy/staging` branch for staging. Publish the repository privately when the account permits it, then run the `Deploy frontend to GitHub Pages` workflow manually with `deploy/staging` selected as the branch. The resulting project Pages URL is suitable for staging; do not add a custom domain, DNS record, or `frontend/CNAME` yet. Keep `frontend/index.html` set to `noindex,nofollow` and keep `frontend/robots.txt` set to `Disallow: /`.
+
+Configure the staging Pages hostname as an allowed origin and as the Turnstile widget hostname before testing inquiries. `TURNSTILE_REQUIRED` is `true` in the Worker configuration; enter the secret directly with Wrangler before accepting real test inquiries.
+
+## Purchased domain: later cutover
+
+`optitrackforsale.com` is reserved for the later production cutover: canonical `www.optitrackforsale.com`, apex redirecting to `www`, and Worker API at `api.optitrackforsale.com`. During this staging phase, do not change Namecheap nameservers, configure DNS, add a Pages custom domain, publish `inquiries@optitrackforsale.com`, or add a manual `api` record. Follow `DOMAIN_IMPLEMENTATION_LOG.md` on `deploy/domain-cutover` only after staging is verified.
+
 ## 1. Create the GitHub repository
 
 1. Create a repository such as `optitrack-system-sale`.

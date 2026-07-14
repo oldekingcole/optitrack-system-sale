@@ -74,3 +74,7 @@ Do these yourself when the agent reaches them:
 - Enter API keys and tokens directly into secret prompts or dashboards.
 - Approve DNS and nameserver changes.
 - Approve the final production launch and removal of `noindex`.
+
+## 6. Purchased-domain cutover after staging
+
+After staging works end to end, use `PROMPT_CODEX_DOMAIN_CUTOVER_AFTER_STAGING.md` from the repository root. It keeps Namecheap, Cloudflare, GitHub Pages, Resend, and indexing changes behind explicit human checkpoints.

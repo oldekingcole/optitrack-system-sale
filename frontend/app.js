@@ -3,8 +3,9 @@
 
   const config = window.OPTITRACK_SALE_CONFIG || {};
   const apiBaseUrl = String(config.apiBaseUrl || "").replace(/\/$/, "");
-  const salesEmail = String(config.salesEmail || "sales@example.com");
+  const salesEmail = String(config.salesEmail || "").trim();
   const brochurePath = String(config.brochurePath || "assets/OptiTrack_Buyer_Brochure_Draft_v2.pdf");
+  const turnstileRequired = config.turnstileRequired !== false;
   let turnstileToken = "";
   let turnstileWidgetId = null;
 
@@ -23,7 +24,9 @@
   document.querySelectorAll(".brochure-link").forEach((link) => link.setAttribute("href", brochurePath));
 
   const copyEmail = document.querySelector("#copyEmail");
-  if (copyEmail) {
+  const emailContact = document.querySelector("#emailContact");
+  if (copyEmail && salesEmail) {
+    emailContact?.removeAttribute("hidden");
     copyEmail.textContent = salesEmail;
     copyEmail.addEventListener("click", async () => {
       try {
@@ -35,7 +38,7 @@
         window.location.href = `mailto:${salesEmail}`;
       }
     });
-  }
+  } else emailContact?.setAttribute("hidden", "");
 
   // Replace photo placeholders automatically when approved files exist.
   document.querySelectorAll("[data-photo]").forEach((frame) => {
@@ -95,11 +98,11 @@
     statusBox.className = "form-status";
 
     if (!form.reportValidity()) return;
-    if (!apiBaseUrl || apiBaseUrl.includes("example.com")) {
-      setStatus(`The inquiry backend is not configured yet. Email ${salesEmail} instead.`, "error");
+    if (!apiBaseUrl) {
+      setStatus("The inquiry backend is not configured yet. Please try again later.", "error");
       return;
     }
-    if (config.turnstileSiteKey && !turnstileToken) {
+    if (turnstileRequired && !turnstileToken) {
       setStatus("Please complete the verification before submitting.", "error");
       return;
     }
@@ -128,7 +131,7 @@
       if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
       setStatus(`Thank you. Your inquiry reference is ${payload.reference}. A seller representative will review it.`, "success");
     } catch (error) {
-      setStatus(`${error.message} You may also email ${salesEmail}.`, "error");
+      setStatus(`${error.message}${salesEmail ? ` You may also email ${salesEmail}.` : ""}`, "error");
     } finally {
       setSubmitting(false);
     }

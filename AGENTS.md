@@ -2,15 +2,24 @@
 
 ## Mission
 
-Prepare, stage, review, and deploy the OptiTrack PrimeX 22 sales website safely. The repository contains a static GitHub Pages frontend and a Cloudflare Worker/D1 backend.
+Prepare, stage, review, and deploy the OptiTrack sales website safely. The repository contains a static GitHub Pages frontend and a Cloudflare Worker/D1 backend.
 
 ## Non-negotiable sales facts
 
 - Public asking price: **$189,900 OBO**.
-- Package includes 58 OptiTrack PrimeX 22 cameras, 58 mounts, 4 calibration wands, 2 calibration squares, 3 USB hardware/security license keys, 4 active base stations, sufficient PoE+ switching and Ethernet cabling for all cameras, and Pelican cases.
+- Package includes 55 OptiTrack PrimeX 22 cameras, 3 OptiTrack Slim 13 cameras, 58 mounts, 4 calibration wands, 2 calibration squares, 3 USB hardware/security license keys, 4 active base stations, sufficient PoE+ switching and Ethernet cabling for all cameras, and Pelican cases.
+- The owner has approved sales of smaller lots. Public copy may state this, but must not promise component availability, pricing, or logistics before buyer diligence.
 - Public operating-history language may say the system was proven in sustained, operationally demanding professional use and was fully operational when decommissioned.
 - Do **not** disclose or infer the former client, property, venue, project, installation name, location, architecture, guests, operators, or use case.
 - Do not promise that software licenses are transferable, current, or under maintenance until OptiTrack confirms the exact status in writing.
+
+## Approved domain plan
+
+- Domain purchased on 2026-07-14: `optitrackforsale.com` through Namecheap.
+- Canonical public site: `https://www.optitrackforsale.com/`; planned API: `https://api.optitrackforsale.com/`.
+- The production domain is documented now, but DNS, custom domains, public email, and cutover happen only after staging is healthy on the dedicated domain-cutover branch.
+- Read `DOMAIN_IMPLEMENTATION_LOG.md` and `DOMAIN_CUTOVER_INPUTS.md` before domain-cutover work.
+- Do not use the official OptiTrack logo, imply manufacturer affiliation, or create a manual `api` DNS record before attaching the Worker Custom Domain.
 
 ## Architecture
 

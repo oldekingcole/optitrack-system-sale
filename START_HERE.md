@@ -20,3 +20,4 @@ The agent should operate on the same local Git repository as GitHub Desktop. It 
 - Staging `noindex` and blocking `robots.txt`: present.
 - Public asking price: `$189,900 OBO`.
 - Known launch blockers: final domain, public sales identity/email, D1 database ID, Turnstile keys, Resend configuration, Cloudflare/GitHub secrets, photographs, and final approvals.
+- Purchased domain: `optitrackforsale.com`; use the separate domain-cutover prompt only after staging is healthy.

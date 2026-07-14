@@ -2,7 +2,7 @@
 
 ## Repository readiness
 
-- Status: repository-ready; no Git remote is embedded.
+- Status: staging branch prepared; the authoritative repository has a GitHub remote.
 - Frontend: static GitHub Pages site.
 - Backend: Cloudflare Worker with D1, Turnstile, and Resend.
 - CI workflows: included.
@@ -20,6 +20,7 @@
 - Obvious secret-pattern scan: passed.
 - Staging indexing protections: passed.
 - Deployment placeholders: intentionally still present and identified by preflight.
+- Purchased-domain cutover documentation is present; production DNS and indexing remain blocked.
 
 ## Manual decisions still required
 
@@ -30,6 +31,7 @@
 - Cloudflare account and DNS management.
 - Resend sender domain and notification inbox.
 - Owner-approved production launch.
+- Namecheap-to-Cloudflare delegation, GitHub domain verification, branded email, and all production DNS actions.
 
 ## Safety state
 

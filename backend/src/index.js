@@ -47,7 +47,11 @@ async function handleInquiry(request, env, ctx) {
   if (!validation.valid) return json({ok: false, message: "Please correct the highlighted information.", errors: validation.errors}, 422, request, env);
 
   const ip = request.headers.get("CF-Connecting-IP") || "";
-  if (env.TURNSTILE_SECRET_KEY) {
+  const turnstileRequired = env.TURNSTILE_REQUIRED !== "false";
+  if (turnstileRequired && !env.TURNSTILE_SECRET_KEY) {
+    return json({ok: false, message: "Verification is not configured."}, 503, request, env);
+  }
+  if (turnstileRequired) {
     const verification = await verifyTurnstile(data.turnstileToken, ip, env);
     if (!verification.ok) return json({ok: false, message: "Verification failed. Please refresh and try again."}, 400, request, env);
   }
@@ -185,8 +189,8 @@ async function sendNotificationEmail(data, reference, env) {
 async function sendBuyerConfirmation(data, reference, env) {
   await sendResendEmail({
     from: env.CONFIRMATION_FROM_EMAIL, to: [data.email], subject: `OptiTrack inquiry received — ${reference}`,
-    html: `<p>Hello ${escapeHtml(data.name)},</p><p>Thank you for your interest in the complete 58-camera OptiTrack PrimeX 22 system. Your inquiry reference is <strong>${escapeHtml(reference)}</strong>.</p><p>A seller representative will review the information and respond using the contact details you provided.</p>`,
-    text: `Hello ${data.name},\n\nThank you for your interest in the complete 58-camera OptiTrack PrimeX 22 system. Your inquiry reference is ${reference}.\n\nA seller representative will review the information and respond.`
+    html: `<p>Hello ${escapeHtml(data.name)},</p><p>Thank you for your interest in the complete 58-camera OptiTrack system (55 PrimeX 22 cameras and 3 Slim 13 cameras). Your inquiry reference is <strong>${escapeHtml(reference)}</strong>.</p><p>A seller representative will review the information and respond using the contact details you provided.</p>`,
+    text: `Hello ${data.name},\n\nThank you for your interest in the complete 58-camera OptiTrack system (55 PrimeX 22 cameras and 3 Slim 13 cameras). Your inquiry reference is ${reference}.\n\nA seller representative will review the information and respond.`
   }, env);
 }
 

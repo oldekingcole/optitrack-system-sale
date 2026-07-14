@@ -5,6 +5,7 @@
   const apiBaseUrl = String(config.apiBaseUrl || "").replace(/\/$/, "");
   const salesEmail = String(config.salesEmail || "sales@example.com");
   const brochurePath = String(config.brochurePath || "assets/OptiTrack_Buyer_Brochure_Draft_v2.pdf");
+  const turnstileRequired = config.turnstileRequired !== false;
   let turnstileToken = "";
   let turnstileWidgetId = null;
 
@@ -99,7 +100,7 @@
       setStatus(`The inquiry backend is not configured yet. Email ${salesEmail} instead.`, "error");
       return;
     }
-    if (config.turnstileSiteKey && !turnstileToken) {
+    if (turnstileRequired && !turnstileToken) {
       setStatus("Please complete the verification before submitting.", "error");
       return;
     }

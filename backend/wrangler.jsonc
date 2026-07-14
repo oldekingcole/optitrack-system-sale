@@ -11,6 +11,7 @@
     "FROM_EMAIL": "OptiTrack System Sale <inquiries@example.com>",
     "CONFIRMATION_FROM_EMAIL": "OptiTrack System Sale <inquiries@example.com>",
     "SEND_BUYER_CONFIRMATION": "false",
+    "TURNSTILE_REQUIRED": "true",
     "TURNSTILE_EXPECTED_HOSTNAME": "www.example.com",
     "MAX_SUBMISSIONS_PER_HOUR": "5"
   },

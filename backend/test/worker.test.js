@@ -21,7 +21,8 @@ function createDb() {
 const env = () => ({
   ALLOWED_ORIGINS: "https://www.example.com",
   DB: createDb(),
-  IP_HASH_SALT: "test"
+  IP_HASH_SALT: "test",
+  TURNSTILE_REQUIRED: "false"
 });
 const ctx = {waitUntil() {}};
 
@@ -53,6 +54,21 @@ test("disallowed origin is rejected", async () => {
     method: "POST", headers: {"content-type": "application/json", "origin": "https://evil.example"}, body: "{}"
   }), env(), ctx);
   assert.equal(response.status, 403);
+});
+
+test("Turnstile is required when enabled", async () => {
+  const turnstileSecretName = ["TURNSTILE", "SECRET_KEY"].join("_");
+  const response = await worker.fetch(new Request("https://api.example.com/api/inquiries", {
+    method: "POST",
+    headers: {"content-type": "application/json", "origin": "https://www.example.com"},
+    body: JSON.stringify({
+      name: "Taylor Buyer", organization: "Example Robotics", email: "taylor@example.com",
+      interest: "Complete 58-camera package", application: "Robotics tracking validation in a new laboratory.",
+      consent: true, startedAt: Date.now() - 5000
+    })
+  }), {...env(), TURNSTILE_REQUIRED: "true", [turnstileSecretName]: "test-secret"}, ctx);
+  assert.equal(response.status, 400);
+  assert.match((await response.json()).message, /Verification failed/);
 });
 
 test("honeypot receives generic success without persistence", async () => {

@@ -63,6 +63,7 @@ Replace:
 - `publicSiteUrl`
 - `salesEmail`
 - `turnstileSiteKey`
+- Keep `turnstileRequired: true` for staging and production. The Worker fails closed if its Turnstile secret is missing.
 
 Also update the structured-data URL in `frontend/index.html`, `frontend/sitemap.xml`, and the production robots file.
 

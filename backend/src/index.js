@@ -47,7 +47,11 @@ async function handleInquiry(request, env, ctx) {
   if (!validation.valid) return json({ok: false, message: "Please correct the highlighted information.", errors: validation.errors}, 422, request, env);
 
   const ip = request.headers.get("CF-Connecting-IP") || "";
-  if (env.TURNSTILE_SECRET_KEY) {
+  const turnstileRequired = env.TURNSTILE_REQUIRED !== "false";
+  if (turnstileRequired && !env.TURNSTILE_SECRET_KEY) {
+    return json({ok: false, message: "Verification is not configured."}, 503, request, env);
+  }
+  if (turnstileRequired) {
     const verification = await verifyTurnstile(data.turnstileToken, ip, env);
     if (!verification.ok) return json({ok: false, message: "Verification failed. Please refresh and try again."}, 400, request, env);
   }

@@ -66,6 +66,32 @@
     statusBox.className = `form-status visible ${type}`;
   };
 
+  const clearFieldErrors = () => {
+    form?.querySelectorAll("[aria-invalid='true']").forEach((field) => {
+      field.removeAttribute("aria-invalid");
+      field.style.removeProperty("border-color");
+      field.style.removeProperty("outline");
+      field.setCustomValidity?.("");
+    });
+  };
+
+  const showFieldErrors = (errors) => {
+    const messages = [];
+    let firstField = null;
+    for (const [name, message] of Object.entries(errors || {})) {
+      messages.push(message);
+      const field = form?.elements.namedItem(name);
+      if (!field || typeof field.setAttribute !== "function") continue;
+      field.setAttribute("aria-invalid", "true");
+      field.style.borderColor = "#b42318";
+      field.style.outline = "3px solid rgba(180,35,24,.16)";
+      field.setCustomValidity?.(message);
+      firstField ||= field;
+    }
+    firstField?.focus();
+    setStatus(messages.join(" "), "error");
+  };
+
   const setSubmitting = (submitting) => {
     submitButton.disabled = submitting;
     submitButton.textContent = submitting ? "Submitting…" : "Submit inquiry";
@@ -94,6 +120,7 @@
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     statusBox.className = "form-status";
+    clearFieldErrors();
 
     if (!form.reportValidity()) return;
     if (!apiBaseUrl) {
@@ -120,7 +147,13 @@
         body: JSON.stringify(data)
       });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.message || "The inquiry could not be submitted.");
+      if (!response.ok) {
+        if (payload.errors) {
+          showFieldErrors(payload.errors);
+          return;
+        }
+        throw new Error(payload.message || "The inquiry could not be submitted.");
+      }
 
       form.reset();
       startedAt.value = String(Date.now());
@@ -134,4 +167,6 @@
       setSubmitting(false);
     }
   });
+  form?.addEventListener("input", clearFieldErrors);
+  form?.addEventListener("change", clearFieldErrors);
 })();

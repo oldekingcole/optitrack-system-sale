@@ -4,7 +4,6 @@
   const config = window.OPTITRACK_SALE_CONFIG || {};
   const apiBaseUrl = String(config.apiBaseUrl || "").replace(/\/$/, "");
   const salesEmail = String(config.salesEmail || "").trim();
-  const brochurePath = String(config.brochurePath || "assets/OptiTrack_Buyer_Brochure_Draft_v2.pdf");
   const turnstileRequired = config.turnstileRequired !== false;
   let turnstileToken = "";
   let turnstileWidgetId = null;
@@ -21,7 +20,6 @@
   }));
 
   document.querySelector("#year").textContent = `© ${new Date().getFullYear()}`;
-  document.querySelectorAll(".brochure-link").forEach((link) => link.setAttribute("href", brochurePath));
 
   const copyEmail = document.querySelector("#copyEmail");
   const emailContact = document.querySelector("#emailContact");

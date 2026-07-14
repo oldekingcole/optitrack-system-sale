@@ -9,7 +9,8 @@ Never put passwords, API tokens, secret keys, private buyer data, or private ema
 - Canonical public URL: `https://www.optitrackforsale.com/`
 - Apex/root URL: `https://optitrackforsale.com/` (redirecting to `www`)
 - API URL: `https://api.optitrackforsale.com/`
-- Proposed public inquiry email: `inquiries@optitrackforsale.com`
+- Approved public contact email for the current release: `cole@teratech.biz`
+- Reserved branded inquiry email: `inquiries@optitrackforsale.com` — do not publish until inbound and outbound delivery are tested
 - Public asking price: `$189,900 OBO`
 - Frontend: GitHub Pages; backend: Cloudflare Workers/D1; bot protection: Turnstile; transactional email: Resend
 - Production indexing approved: **no**

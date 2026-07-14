@@ -71,6 +71,33 @@ test("Turnstile is required when enabled", async () => {
   assert.match((await response.json()).message, /Verification failed/);
 });
 
+test("Turnstile accepts a hostname from the configured allowlist", async () => {
+  const originalFetch = globalThis.fetch;
+  const turnstileSecretName = ["TURNSTILE", "SECRET_KEY"].join("_");
+  globalThis.fetch = async () => new Response(JSON.stringify({
+    success: true, hostname: "www.optitrackforsale.com", action: "sales_inquiry"
+  }), {headers: {"content-type": "application/json"}});
+  try {
+    const testEnv = {
+      ...env(), TURNSTILE_REQUIRED: "true", [turnstileSecretName]: "test-secret",
+      TURNSTILE_EXPECTED_HOSTNAMES: "oldekingcole.github.io,www.optitrackforsale.com"
+    };
+    const response = await worker.fetch(new Request("https://api.example.com/api/inquiries", {
+      method: "POST",
+      headers: {"content-type": "application/json", "origin": "https://www.example.com"},
+      body: JSON.stringify({
+        name: "Taylor Buyer", organization: "Example Robotics", email: "taylor@example.com",
+        interest: "Complete 58-camera package", application: "Robotics tracking validation in a new laboratory.",
+        consent: true, startedAt: Date.now() - 5000, turnstileToken: "test-token"
+      })
+    }), testEnv, ctx);
+    assert.equal(response.status, 201);
+    assert.equal(testEnv.DB.rows.length, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("honeypot receives generic success without persistence", async () => {
   const testEnv = env();
   const response = await worker.fetch(new Request("https://api.example.com/api/inquiries", {

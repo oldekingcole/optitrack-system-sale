@@ -162,8 +162,9 @@ async function verifyTurnstile(token, ip, env) {
     body: JSON.stringify({secret: env.TURNSTILE_SECRET_KEY, response: token, remoteip: ip, idempotency_key: crypto.randomUUID()})
   });
   const result = await response.json();
-  const expectedHost = String(env.TURNSTILE_EXPECTED_HOSTNAME || "").trim();
-  const validHost = !expectedHost || result.hostname === expectedHost;
+  const expectedHosts = String(env.TURNSTILE_EXPECTED_HOSTNAMES || env.TURNSTILE_EXPECTED_HOSTNAME || "")
+    .split(",").map((host) => host.trim()).filter(Boolean);
+  const validHost = expectedHosts.length === 0 || expectedHosts.includes(result.hostname);
   const validAction = !result.action || result.action === "sales_inquiry";
   return {ok: Boolean(result.success && validHost && validAction), result};
 }

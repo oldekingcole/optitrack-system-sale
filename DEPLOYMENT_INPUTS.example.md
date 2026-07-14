@@ -10,7 +10,7 @@ Copy this file to `DEPLOYMENT_INPUTS.local.md` for your own notes. The `.local.m
 - Public domain: `optitrackforsale.com` — purchased 2026-07-14
 - Website hostname: `www.optitrackforsale.com`
 - API hostname: `api.optitrackforsale.com`
-- Public sales email: `inquiries@optitrackforsale.com` — publish only after delivery is tested
+- Public sales email: `cole@teratech.biz` — approved for the current release
 - Internal notification email: `[REQUIRED]`
 - Public seller/company name: `[REQUIRED OR APPROVED NEUTRAL LABEL]`
 - Optional public phone: `[OPTIONAL]`

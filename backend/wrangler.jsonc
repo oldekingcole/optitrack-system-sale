@@ -5,11 +5,11 @@
   "compatibility_date": "2026-07-13",
   "workers_dev": true,
   "vars": {
-    "ALLOWED_ORIGINS": "http://localhost:8000,https://oldekingcole.github.io",
-    "PUBLIC_SITE_URL": "https://oldekingcole.github.io/optitrack-system-sale/",
+    "ALLOWED_ORIGINS": "http://localhost:8000,https://oldekingcole.github.io,https://www.optitrackforsale.com",
+    "PUBLIC_SITE_URL": "https://www.optitrackforsale.com/",
     "SEND_BUYER_CONFIRMATION": "false",
     "TURNSTILE_REQUIRED": "true",
-    "TURNSTILE_EXPECTED_HOSTNAME": "oldekingcole.github.io",
+    "TURNSTILE_EXPECTED_HOSTNAMES": "oldekingcole.github.io,www.optitrackforsale.com",
     "MAX_SUBMISSIONS_PER_HOUR": "5"
   },
   "d1_databases": [

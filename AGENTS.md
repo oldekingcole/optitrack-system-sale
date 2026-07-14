@@ -2,12 +2,13 @@
 
 ## Mission
 
-Prepare, stage, review, and deploy the OptiTrack PrimeX 22 sales website safely. The repository contains a static GitHub Pages frontend and a Cloudflare Worker/D1 backend.
+Prepare, stage, review, and deploy the OptiTrack sales website safely. The repository contains a static GitHub Pages frontend and a Cloudflare Worker/D1 backend.
 
 ## Non-negotiable sales facts
 
 - Public asking price: **$189,900 OBO**.
-- Package includes 58 OptiTrack PrimeX 22 cameras, 58 mounts, 4 calibration wands, 2 calibration squares, 3 USB hardware/security license keys, 4 active base stations, sufficient PoE+ switching and Ethernet cabling for all cameras, and Pelican cases.
+- Package includes 55 OptiTrack PrimeX 22 cameras, 3 OptiTrack Slim 13 cameras, 58 mounts, 4 calibration wands, 2 calibration squares, 3 USB hardware/security license keys, 4 active base stations, sufficient PoE+ switching and Ethernet cabling for all cameras, and Pelican cases.
+- The owner has approved sales of smaller lots. Public copy may state this, but must not promise component availability, pricing, or logistics before buyer diligence.
 - Public operating-history language may say the system was proven in sustained, operationally demanding professional use and was fully operational when decommissioned.
 - Do **not** disclose or infer the former client, property, venue, project, installation name, location, architecture, guests, operators, or use case.
 - Do not promise that software licenses are transferable, current, or under maintenance until OptiTrack confirms the exact status in writing.

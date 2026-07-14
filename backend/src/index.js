@@ -189,8 +189,8 @@ async function sendNotificationEmail(data, reference, env) {
 async function sendBuyerConfirmation(data, reference, env) {
   await sendResendEmail({
     from: env.CONFIRMATION_FROM_EMAIL, to: [data.email], subject: `OptiTrack inquiry received — ${reference}`,
-    html: `<p>Hello ${escapeHtml(data.name)},</p><p>Thank you for your interest in the complete 58-camera OptiTrack PrimeX 22 system. Your inquiry reference is <strong>${escapeHtml(reference)}</strong>.</p><p>A seller representative will review the information and respond using the contact details you provided.</p>`,
-    text: `Hello ${data.name},\n\nThank you for your interest in the complete 58-camera OptiTrack PrimeX 22 system. Your inquiry reference is ${reference}.\n\nA seller representative will review the information and respond.`
+    html: `<p>Hello ${escapeHtml(data.name)},</p><p>Thank you for your interest in the complete 58-camera OptiTrack system (55 PrimeX 22 cameras and 3 Slim 13 cameras). Your inquiry reference is <strong>${escapeHtml(reference)}</strong>.</p><p>A seller representative will review the information and respond using the contact details you provided.</p>`,
+    text: `Hello ${data.name},\n\nThank you for your interest in the complete 58-camera OptiTrack system (55 PrimeX 22 cameras and 3 Slim 13 cameras). Your inquiry reference is ${reference}.\n\nA seller representative will review the information and respond.`
   }, env);
 }
 

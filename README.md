@@ -1,9 +1,9 @@
-# Complete OptiTrack PrimeX 22 Sales Website
+# Complete OptiTrack Sales Website
 
 > **Fast deployment:** begin with [`START_HERE.md`](START_HERE.md).
 
 
-A deployable frontend and backend for marketing the complete 58-camera OptiTrack PrimeX 22 system at **$189,900 OBO**.
+A deployable frontend and backend for marketing the complete 58-camera OptiTrack system—55 PrimeX 22 cameras and 3 Slim 13 cameras—at **$189,900 OBO**.
 
 ## Architecture
 

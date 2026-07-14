@@ -8,7 +8,8 @@ $Required = @(
   "backend/package.json", "backend/wrangler.jsonc", "backend/src/index.js",
   "backend/migrations/0001_create_inquiries.sql",
   ".github/workflows/ci.yml", ".github/workflows/deploy-pages.yml",
-  "AGENTS.md", "CLAUDE.md"
+  "AGENTS.md", "CLAUDE.md", "DOMAIN_IMPLEMENTATION_LOG.md", "DOMAIN_CUTOVER_INPUTS.md",
+  "PROMPT_CODEX_DOMAIN_CUTOVER_AFTER_STAGING.md"
 )
 
 $Failed = $false

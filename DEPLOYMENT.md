@@ -17,6 +17,10 @@ Use the `deploy/staging` branch for staging. Publish the repository privately wh
 
 Configure the staging Pages hostname as an allowed origin and as the Turnstile widget hostname before testing inquiries. `TURNSTILE_REQUIRED` is `true` in the Worker configuration; enter the secret directly with Wrangler before accepting real test inquiries.
 
+## Purchased domain: later cutover
+
+`optitrackforsale.com` is reserved for the later production cutover: canonical `www.optitrackforsale.com`, apex redirecting to `www`, and Worker API at `api.optitrackforsale.com`. During this staging phase, do not change Namecheap nameservers, configure DNS, add a Pages custom domain, publish `inquiries@optitrackforsale.com`, or add a manual `api` record. Follow `DOMAIN_IMPLEMENTATION_LOG.md` on `deploy/domain-cutover` only after staging is verified.
+
 ## 1. Create the GitHub repository
 
 1. Create a repository such as `optitrack-system-sale`.

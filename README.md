@@ -8,8 +8,8 @@ A deployable frontend and backend for marketing the complete 58-camera OptiTrack
 ## Architecture
 
 - **Frontend:** dependency-free HTML/CSS/JavaScript hosted by GitHub Pages.
-- **Public domain:** `www.yourdomain.com` connected to GitHub Pages.
-- **Backend:** Cloudflare Worker at `api.yourdomain.com`.
+- **Planned public domain:** `www.optitrackforsale.com` connected to GitHub Pages after staging.
+- **Planned backend:** Cloudflare Worker at `api.optitrackforsale.com` after staging.
 - **Lead storage:** Cloudflare D1.
 - **Email notification:** Resend REST API.
 - **Bot protection:** Cloudflare Turnstile, honeypot, submission-time check, origin validation, and D1-backed rate limiting.
@@ -25,6 +25,8 @@ frontend/                  Public GitHub Pages website
 backend/                   Cloudflare Worker inquiry API
 .github/workflows/         GitHub Pages, CI, and optional Worker deployment
 DEPLOYMENT.md              Complete setup sequence
+DOMAIN_IMPLEMENTATION_LOG.md Purchased-domain cutover plan
+DOMAIN_CUTOVER_INPUTS.md   Approved non-secret domain values
 SECURITY.md                Security and privacy notes
 ```
 
@@ -104,3 +106,7 @@ For the fastest assisted deployment, start with `GITHUB_DESKTOP_QUICKSTART.md`. 
 - A staging deployment issue template and pull-request checklist.
 
 The coding agent and GitHub Desktop should use the same local repository. The agent does not need to control GitHub Desktop directly.
+
+## Purchased production domain
+
+`optitrackforsale.com` was purchased through Namecheap on 2026-07-14. The planned production URLs are `https://www.optitrackforsale.com/`, `https://optitrackforsale.com/` (redirecting to `www`), and `https://api.optitrackforsale.com/`. Keep staging `noindex` protections in place; use `DOMAIN_IMPLEMENTATION_LOG.md` only after the staging flow is healthy.

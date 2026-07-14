@@ -8,6 +8,10 @@ Never place Cloudflare, Resend, Turnstile, database, or admin credentials in `fr
 
 The backend stores buyer contact and qualification information in D1. It does not intentionally store the visitor's raw IP address; it stores a salted SHA-256 hash used for rate limiting. Limit access to the D1 database and admin token.
 
+## Private notification inbox
+
+Treat the internal inquiry-notification address as non-public operational data. Configure it directly as a Cloudflare Worker secret or protected runtime value during cutover; do not commit it to `wrangler.jsonc`.
+
 ## Bot and abuse controls
 
 - Cloudflare Turnstile with mandatory server-side token verification

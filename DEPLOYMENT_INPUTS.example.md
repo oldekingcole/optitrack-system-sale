@@ -7,14 +7,14 @@ Copy this file to `DEPLOYMENT_INPUTS.local.md` for your own notes. The `.local.m
 - GitHub account or organization: `[REQUIRED]`
 - Repository name: `optitrack-system-sale` or `[OTHER]`
 - Repository visibility during staging: `private`
-- Public domain: `[REQUIRED WHEN SELECTED]`
-- Website hostname: `www.[DOMAIN]`
-- API hostname: `api.[DOMAIN]`
-- Public sales email: `[REQUIRED]`
+- Public domain: `optitrackforsale.com` — purchased 2026-07-14
+- Website hostname: `www.optitrackforsale.com`
+- API hostname: `api.optitrackforsale.com`
+- Public sales email: `inquiries@optitrackforsale.com` — publish only after delivery is tested
 - Internal notification email: `[REQUIRED]`
 - Public seller/company name: `[REQUIRED OR APPROVED NEUTRAL LABEL]`
 - Optional public phone: `[OPTIONAL]`
-- Resend sender address: `inquiries@[DOMAIN]`
+- Resend sender address: `inquiries@optitrackforsale.com` — after domain verification
 - Cloudflare account ID: `[ENTER ONLY IN GITHUB SECRET/DASHBOARD, NOT HERE IF TREATED AS SENSITIVE]`
 - D1 database ID: `[SAFE TO PLACE IN wrangler.jsonc AFTER CREATION]`
 - Turnstile site key: `[PUBLIC KEY; SAFE FOR frontend/config.js]`
@@ -27,6 +27,7 @@ Enter these directly through Wrangler or GitHub repository secrets. Never put th
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 - `RESEND_API_KEY`
+- `NOTIFY_EMAIL`
 - `TURNSTILE_SECRET_KEY`
 - `ADMIN_TOKEN`
 - `IP_HASH_SALT`

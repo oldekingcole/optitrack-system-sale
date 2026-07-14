@@ -12,6 +12,14 @@ Prepare, stage, review, and deploy the OptiTrack PrimeX 22 sales website safely.
 - Do **not** disclose or infer the former client, property, venue, project, installation name, location, architecture, guests, operators, or use case.
 - Do not promise that software licenses are transferable, current, or under maintenance until OptiTrack confirms the exact status in writing.
 
+## Approved domain plan
+
+- Domain purchased on 2026-07-14: `optitrackforsale.com` through Namecheap.
+- Canonical public site: `https://www.optitrackforsale.com/`; planned API: `https://api.optitrackforsale.com/`.
+- The production domain is documented now, but DNS, custom domains, public email, and cutover happen only after staging is healthy on the dedicated domain-cutover branch.
+- Read `DOMAIN_IMPLEMENTATION_LOG.md` and `DOMAIN_CUTOVER_INPUTS.md` before domain-cutover work.
+- Do not use the official OptiTrack logo, imply manufacturer affiliation, or create a manual `api` DNS record before attaching the Worker Custom Domain.
+
 ## Architecture
 
 - `frontend/`: dependency-free HTML/CSS/JavaScript deployed to GitHub Pages.
